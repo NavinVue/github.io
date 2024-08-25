@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Navinvue&#39;s Blog"/>
+        <meta property="og:title" content="Good Encoding Habit"/>
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>page - Archives - Navinvue&#39;s Blog</title>
+    <title>Good Encoding Habit - Navinvue&#39;s Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -159,77 +159,86 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Archives</h1>
+                <div class="post-heading">
+                    <h1>Good Encoding Habit</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2024-08-25
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/misc/">#misc</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2024/01/09/csapp前的emo/">
-        <h1 class="post-title archive">
-            csapp前的emo
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2024-01-09
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2023/12/29/ISO8601-Duration/">
-        <h1 class="post-title archive">
-            ISO8601 Duration
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-12-29
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <center><font size='5' color='blue'>良好的编码习惯</font></center>
+
+<p>如题，良好的编码习惯太重要了。本文的编码习惯不仅仅只是指对齐之类的编码习惯，还有代码的写法。采用奇技淫巧或者说不考虑后果的写法会无法保障易读易懂、可维护性。比如这几天负责某个小任务时，代码中出现了这样几句代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">matches = re.findall(<span class="string">r&#x27;\d+&#x27;</span>, data[<span class="number">5</span>][<span class="number">0</span>]) <span class="comment"># data[5][0]是字符串格式的</span></span><br><span class="line">number = <span class="built_in">int</span>(matches[<span class="number">1</span>])</span><br><span class="line">save_image(x_hat, <span class="string">f&#x27;xxxx<span class="subst">&#123;number&#125;</span>.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>咋一看没啥问题，这部分代码的原意是从文件名中提取对应的数字，然后该数字作为重命名的文件的文件名。</p>
+<p>然而：当实际运行时会发现这份代码只会产生一个.png文件。原因在于：原来的文件名是<code>/data/xxx/xxx/newstest2013/xxx/xxx&#123;number&#125;.png</code>，但是代码转手给我后，我的文件路径变成了<code>/home/xxx/xx2024/xxx/xxx/newstest2013/xxx/xxx&#123;number&#125;.png</code>。恰好我的文件路径中多出来了一个<code>2024</code>，导致代码中的<code>matches[1]</code>变成了<code>2023</code>，最后产生的所有文件都是<code>xxx2013.png</code>。可能在自己编码的时候，很难会想到这个问题，但是一旦代码被他人维护，就可能会出现问题。不恰当的引用：“你无法预料到你的顾客会对你的产品做什么。”上述代码可能改成<code>matches[-1]</code>会更好一些，或者说正则表达式直接丢掉所有的<code>/</code>，最后匹配数字可能会更好。并且这部分应该有注释才对。</p>
+<p>代码规范，可能是将来伴随一辈子的课程！</p>
+
+
+                
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=NavinVue"></script>
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_sharing_toolbox"></div>
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2023/12/21/深夜感想/">
-        <h1 class="post-title archive">
-            深夜感想
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-12-21
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-        <li class="previous"><a href="/archives/">&larr;  Newer Posts</a></li>
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
